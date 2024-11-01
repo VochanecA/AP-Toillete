@@ -1,10 +1,11 @@
 "use client";
 
-import { MoonIcon, SunIcon } from "lucide-react";
+import { MoonIcon, SunIcon, UserCircle2 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/use-language";
 import Image from "next/image";
+import Link from "next/link";
 
 const languages = [
   { code: "en", name: "English", flag: "https://images.unsplash.com/photo-1628324214710-8882074b83ce?w=32&h=32&q=80&fit=crop" },
@@ -21,7 +22,16 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center justify-between">
-        <div className="flex gap-6 md:gap-10">
+        <div className="flex items-center gap-3">
+          <div className="relative h-8 w-8">
+            <Image
+              src="https://images.unsplash.com/photo-1584589167171-541ce45f1eea?w=32&h=32&q=80&fit=crop"
+              alt="Logo"
+              width={32}
+              height={32}
+              className="rounded-md object-cover"
+            />
+          </div>
           <h2 className="text-lg font-semibold">Toilet Feedback</h2>
         </div>
         
@@ -55,6 +65,13 @@ export default function Header() {
             <MoonIcon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             <span className="sr-only">Toggle theme</span>
           </Button>
+
+          <Link href="/login">
+            <Button variant="ghost" size="icon">
+              <UserCircle2 className="h-5 w-5" />
+              <span className="sr-only">Admin Login</span>
+            </Button>
+          </Link>
         </div>
       </div>
     </header>
